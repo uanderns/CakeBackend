@@ -1,4 +1,4 @@
-package com.cakedeliver.cakedeliver.entities;
+package com.cakedeliver.cakedeliver.enums;
 
 public enum PedidoStatus {
 

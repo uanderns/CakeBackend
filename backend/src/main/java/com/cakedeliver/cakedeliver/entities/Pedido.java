@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.cakedeliver.cakedeliver.enums.PedidoStatus;
+
 
 @Entity
 @Table(name = "tb_pedido")
