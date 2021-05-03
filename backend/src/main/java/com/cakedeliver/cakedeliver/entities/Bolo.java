@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +17,7 @@ public class Bolo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto incremento no banco
 	
 	private Long id;
 	private String nome;
@@ -28,8 +26,7 @@ public class Bolo implements Serializable{
 	private String imagemUrl;
 	private Double tamanho;
 	
-	//@ManyToOne //Muitos Bolos para um tipo
-	//@JoinColumn(name = "cod_tipo")
+		
 	
 	public Bolo() {
 		

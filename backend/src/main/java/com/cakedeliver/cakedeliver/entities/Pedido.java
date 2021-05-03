@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cakedeliver.cakedeliver.enums.PedidoStatus;
@@ -40,8 +41,10 @@ public class Pedido implements Serializable {
 	
 	@JoinTable(name = "tb_pedido_bolo_tipo", // tabela de associação
 		joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
-		inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
-				
+		inverseJoinColumns = @JoinColumn(name = "bolo_id")
+		) 
+	
+					
 			
 	//para nao repetir os bolos no mesmo pedido
 	private Set<Bolo> bolos = new HashSet<>();
