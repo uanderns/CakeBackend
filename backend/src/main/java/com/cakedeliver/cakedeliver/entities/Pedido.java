@@ -16,11 +16,9 @@ import javax.persistence.Table;
 
 import com.cakedeliver.cakedeliver.enums.PedidoStatus;
 
-
 @Entity
 @Table(name = "tb_pedido")
 public class Pedido implements Serializable {
-	
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -35,22 +33,16 @@ public class Pedido implements Serializable {
 	private Instant moment; //Instante em que o pedido foi feito
 	private PedidoStatus status; //atributo da classe enum
 	
-	
 	@ManyToMany //Annotation de relacionamento de muitos pra muitos
 	
 	@JoinTable(name = "tb_pedido_bolo_tipo", // tabela de associação
 		joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
-		inverseJoinColumns = @JoinColumn(name = "bolo_id")
-		) 
+		inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
 	
-					
-			
 	//para nao repetir os bolos no mesmo pedido
 	private Set<Bolo> bolos = new HashSet<>();
 	
-	public Pedido() {
-		
-	}
+	public Pedido() {}
 
 	public Pedido(Long id, String endereco, Double latitude, Double longitude, Instant moment, PedidoStatus status) {
 		super();
@@ -62,8 +54,6 @@ public class Pedido implements Serializable {
 		this.status = status;
 	}
 	
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -124,7 +114,6 @@ public class Pedido implements Serializable {
 		return result;
 	}
 	
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -141,11 +130,4 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-	
-	
-	
-	
-
 }

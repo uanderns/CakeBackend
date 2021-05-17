@@ -15,13 +15,8 @@ import javax.validation.constraints.Size;
 import com.cakedeliver.cakedeliver.enums.GeneroStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
 @MappedSuperclass //para a heranças das classes que herdarao
-
-
-
 public abstract class Usuario implements Serializable {
-	
 		
 	private static final long serialVersionUID = 1L;
 	
@@ -30,15 +25,15 @@ public abstract class Usuario implements Serializable {
 	private Long id;
 	
 	@Column(length = 50)
-	@NotBlank(message = "nome da Pessoa deve ser preenchido")
-	@Size(min = 2, max = 50, message = "Nome da Pessoa deve ter entre 2 e 50 letras")
+	@NotBlank(message = "Preencha com o Nome do Usuário")
+	@Size(min = 2, max = 50, message = "O Nome do Usuário deve ter entre 2 e 50 caracteres")
 	private String nome;
 	
-	@NotNull(message = "O uusario deve possuir pelo menos um telefone")
+	@NotNull(message = "O Usuário deve possuir no minímo um número de telefone")
 	private Integer telefone;
 	
 	@Column(length = 11)
-	@Size(min = 11, message = "o cpf da pessoa deverá ter 11 numeros")
+	@Size(min = 11, max = 11, message = "O CPF do Usuário deve conter 11 digitos")
 	private Integer cpf;
 		
 	private String endereco;
@@ -48,14 +43,9 @@ public abstract class Usuario implements Serializable {
 	
 	private GeneroStatus genero;
 	
-	
-	
-	public Usuario() {
-		
-	}
+	public Usuario() {}
 
-	public Usuario(Long id, String nome, Integer telefone, Integer cpf, String endereco,
-			Date dataNascimento, GeneroStatus genero) {
+	public Usuario(Long id, String nome, Integer telefone, Integer cpf, String endereco, Date dataNascimento, GeneroStatus genero) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -97,8 +87,6 @@ public abstract class Usuario implements Serializable {
 	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
 	}
-
-	
 
 	public String getEndereco() {
 		return endereco;
@@ -148,10 +136,4 @@ public abstract class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
 }

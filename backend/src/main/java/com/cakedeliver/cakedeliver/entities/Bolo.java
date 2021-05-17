@@ -1,8 +1,6 @@
 package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_bolo")
 public class Bolo implements Serializable{
-	
-	
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -25,12 +22,8 @@ public class Bolo implements Serializable{
 	private String descricao;
 	private String imagemUrl;
 	private Double tamanho;
-	
-		
-	
-	public Bolo() {
-		
-	}
+
+	public Bolo() {}
 
 	public Bolo(Long id, String nome, Double preco, String descricao, String imagemUrl, Double tamanho) {
 		super();
@@ -114,8 +107,4 @@ public class Bolo implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
-
 }

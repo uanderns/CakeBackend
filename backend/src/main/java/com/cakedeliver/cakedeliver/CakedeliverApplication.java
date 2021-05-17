@@ -9,5 +9,4 @@ public class CakedeliverApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CakedeliverApplication.class, args);
 	}
-
 }

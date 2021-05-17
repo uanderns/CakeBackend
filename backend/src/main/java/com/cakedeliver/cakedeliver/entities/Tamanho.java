@@ -1,7 +1,7 @@
 package com.cakedeliver.cakedeliver.entities;
 
 public class Tamanho {
-	
-	private Double tamanho;
 
+  private Integer tamanhoId;	
+	private Double tamanho;
 }

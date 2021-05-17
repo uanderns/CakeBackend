@@ -7,12 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "tb_tipo_bolo")
 public class TipoBolo implements Serializable {
-	
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,12 +19,7 @@ public class TipoBolo implements Serializable {
 	
 	private String nome;
 	
-		
-	
-	public TipoBolo() {
-		
-	}
-
+	public TipoBolo() {}
 
 	public TipoBolo(Long id, String nome) {
 		super();
@@ -35,26 +27,21 @@ public class TipoBolo implements Serializable {
 		this.nome = nome;
 	}
 
-
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
 	public String getNome() {
 		return nome;
 	}
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -63,7 +50,6 @@ public class TipoBolo implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -81,9 +67,4 @@ public class TipoBolo implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-
 }

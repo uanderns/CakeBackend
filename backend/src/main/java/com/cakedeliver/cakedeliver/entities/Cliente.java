@@ -7,17 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "tb_cliente")
 public class Cliente extends Usuario implements Serializable{
-	
-	
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	
-	
+
 	private Boolean ativo = true;
 	private Date dataCadastro;
 	private String senha;
@@ -25,14 +20,8 @@ public class Cliente extends Usuario implements Serializable{
 	
 	@ManyToOne
 	private Pedido pedido;
-	
-	
-	
-	
-	public Cliente() {
-		
-	}
-		
+
+	public Cliente() {}
 
 	public Cliente(String senha, String email) {
 		super();
@@ -40,18 +29,12 @@ public class Cliente extends Usuario implements Serializable{
 		this.email = email;
 	}
 
-
-
 	public Cliente( Boolean ativo, Date dataCadastro) {
 		super();
-		
 		this.ativo = ativo;
 		this.dataCadastro = dataCadastro;
-		
-		
 	}
 
-	
 	public Boolean getAtivo() {
 		return ativo;
 	}
@@ -68,31 +51,19 @@ public class Cliente extends Usuario implements Serializable{
 		this.dataCadastro = dataCadastro;
 	}
 	
-	
 	public String getSenha() {
 		return senha;
 	}
-
-
 
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-
-	
-	
 }
