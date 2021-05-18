@@ -29,6 +29,16 @@ public abstract class Usuario implements Serializable {
 	@Size(min = 2, max = 50, message = "O Nome do Usuário deve ter entre 2 e 50 caracteres")
 	private String nome;
 	
+  @Column(length = 20)
+	@NotBlank(message = "Preencha com o Email do Usuário")
+	@Size(min = 2, max = 20, message = "O Email do Usuário deve ter entre 2 e 20 caracteres")
+	private String email;
+	
+  @Column(length = 15)
+	@NotBlank(message = "Preencha com a Senha do Usuário")
+	@Size(min = 2, max = 15, message = "A Senha do Usuário deve ter entre 2 e 15 caracteres")
+	private String senha;
+	
 	@NotNull(message = "O Usuário deve possuir no minímo um número de telefone")
 	private Integer telefone;
 	
@@ -42,74 +52,61 @@ public abstract class Usuario implements Serializable {
 	private Date dataNascimento;
 	
 	private GeneroStatus genero;
+  private Boolean ativo;
 	
 	public Usuario() {}
 
-	public Usuario(Long id, String nome, Integer telefone, Integer cpf, String endereco, Date dataNascimento, GeneroStatus genero) {
+	public Usuario(Long id, String nome, String email, String senha, Integer telefone, Integer cpf, String endereco, Date dataNascimento, GeneroStatus genero, Boolean ativo) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.telefone = telefone;
+    this.email = email;
+    this.senha = senha;
 		this.cpf = cpf;
-		this.endereco = endereco;
+		this.telefone = telefone;
+    this.ativo = ativo;
 		this.dataNascimento = dataNascimento;
 		this.genero = genero;
 	}
 
 	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		return this.id;
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+  public Long getEmail() {
+		return this.email;
+	}
+
+  public Long getSenha() {
+		return this.senha;
 	}
 
 	public Integer getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(Integer telefone) {
-		this.telefone = telefone;
+		return this.telefone;
 	}
 
 	public Integer getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(Integer cpf) {
-		this.cpf = cpf;
+		return this.cpf;
 	}
 
 	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+		return this.endereco;
 	}
 
 	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+		return this.dataNascimento;
 	}
 
 	public GeneroStatus getGenero() {
-		return genero;
+		return this.genero;
 	}
-
-	public void setGenero(GeneroStatus genero) {
-		this.genero = genero;
+  
+  public Boolean isAtivo() {
+		return this.ativo;
 	}
 
 	@Override
