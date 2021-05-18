@@ -22,10 +22,10 @@ public class Funcionario extends Usuario implements Serializable{
 	}
 
 	public Date getDataAdmissao() {
-		return dataAdmissao;
+		return this.dataAdmissao;
 	}
 
 	public Date getDataDemissao() {
-		return dataDemissao;
+		return this.dataDemissao;
 	}
 }

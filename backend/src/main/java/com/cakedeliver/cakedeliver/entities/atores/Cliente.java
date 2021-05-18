@@ -26,10 +26,10 @@ public class Cliente extends Usuario implements Serializable{
 	}
 
 	public String getEndereco() {
-		return endereco;
+		return this.endereco;
 	}
 
 	public Date getDataCadastro() {
-		return dataCadastro;
+		return this.dataCadastro;
 	}
 }
