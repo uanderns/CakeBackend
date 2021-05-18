@@ -1,4 +1,4 @@
-package com.cakedeliver.cakedeliver.entities;
+package com.cakedeliver.cakedeliver.entities.atores;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -46,18 +46,13 @@ public abstract class Usuario implements Serializable {
 	@Size(min = 11, max = 11, message = "O CPF do Usuário deve conter 11 digitos")
 	private Integer cpf;
 		
-	private String endereco;
-	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date dataNascimento;
 	
 	private GeneroStatus genero;
   private Boolean ativo;
-	
-	public Usuario() {}
 
-	public Usuario(Long id, String nome, String email, String senha, Integer telefone, Integer cpf, String endereco, Date dataNascimento, GeneroStatus genero, Boolean ativo) {
-		super();
+	public Usuario(Long id, String nome, String email, String senha, Integer telefone, Integer cpf, Date dataNascimento, GeneroStatus genero, Boolean ativo) {
 		this.id = id;
 		this.nome = nome;
     this.email = email;
@@ -91,10 +86,6 @@ public abstract class Usuario implements Serializable {
 
 	public Integer getCpf() {
 		return this.cpf;
-	}
-
-	public String getEndereco() {
-		return this.endereco;
 	}
 
 	public Date getDataNascimento() {
