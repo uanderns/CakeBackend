@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,39 +16,58 @@ public class TipoBolo implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idTipo;
+	private String nomeTipo;
 	
-	private String nome;
 	
-	public TipoBolo() {}
+	@ManyToOne // muitos tipos para um bolo
+	private Bolo bolo;
+	
+	
+	public TipoBolo() {
+		
+	}
 
-	public TipoBolo(Long id, String nome) {
+	
+	public TipoBolo(Long idTipo, String nomeTipo) {
 		super();
-		this.id = id;
-		this.nome = nome;
+		this.idTipo = idTipo;
+		this.nomeTipo = nomeTipo;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIdTipo() {
+		return idTipo;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdTipo(Long idTipo) {
+		this.idTipo = idTipo;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeTipo() {
+		return nomeTipo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeTipo(String nomeTipo) {
+		this.nomeTipo = nomeTipo;
 	}
+	
+	
+
+	public Bolo getBolo() {
+		return bolo;
+	}
+
+
+	public void setBolo(Bolo bolo) {
+		this.bolo = bolo;
+	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((idTipo == null) ? 0 : idTipo.hashCode());
 		return result;
 	}
 
@@ -60,11 +80,20 @@ public class TipoBolo implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		TipoBolo other = (TipoBolo) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (idTipo == null) {
+			if (other.idTipo != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!idTipo.equals(other.idTipo))
 			return false;
 		return true;
 	}
+	
+	
+	
+	
+	
+	
 }
+
+	
+	

@@ -1,10 +1,15 @@
 package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,32 +20,38 @@ public class Bolo implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto incremento no banco
+	@Column(name="idbolo")
+	private Long idBolo;
 	
-	private Long id;
 	private String nome;
 	private Double preco;
-	private String descricao;
-	private String imagemUrl;
-	private Double tamanho;
+	
+	@OneToMany // um bolo para muitos tipos
+	private List <TipoBolo> tipobolo;
+	
+	@OneToOne  // um bolo para um sabor
+	private Sabor sabor;
+	
+	@OneToMany //um bolo para varios sabores
+	private List <Tamanho> tamanho;
+		
 
 	public Bolo() {}
 
-	public Bolo(Long id, String nome, Double preco, String descricao, String imagemUrl, Double tamanho) {
+	public Bolo(Long idBolo, String nome, Double preco,Double tamanho) {
 		super();
-		this.id = id;
+		this.idBolo = idBolo;
 		this.nome = nome;
 		this.preco = preco;
-		this.descricao = descricao;
-		this.imagemUrl = imagemUrl;
-		this.tamanho = tamanho;
+				
 	}
 
 	public Long getId() {
-		return id;
+		return idBolo;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idBolo = id;
 	}
 
 	public String getNome() {
@@ -59,35 +70,12 @@ public class Bolo implements Serializable{
 		this.preco = preco;
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getImagemUrl() {
-		return imagemUrl;
-	}
-
-	public void setImagemUrl(String imagemUrl) {
-		this.imagemUrl = imagemUrl;
-	}
-
-	public Double getTamanho() {
-		return tamanho;
-	}
-
-	public void setTamanho(Double tamanho) {
-		this.tamanho = tamanho;
-	}
-
+		
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((idBolo == null) ? 0 : idBolo.hashCode());
 		return result;
 	}
 
@@ -100,10 +88,10 @@ public class Bolo implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Bolo other = (Bolo) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (idBolo == null) {
+			if (other.idBolo != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!idBolo.equals(other.idBolo))
 			return false;
 		return true;
 	}
