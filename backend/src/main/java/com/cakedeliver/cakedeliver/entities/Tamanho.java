@@ -1,11 +1,11 @@
 package com.cakedeliver.cakedeliver.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,13 +16,13 @@ public class Tamanho {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto incremento no banco
  	private Long idTamanho;
-	
 	private Double tamanho;
 	
 	
-	@ManyToOne // muitos tamanhos para um bolo
-	@JoinColumn(name ="idbolo", nullable = false)
-	private Bolo bolo;
+	
+	@OneToMany // muitos bolos para um tamanho
+	private List <Bolo> bolo;
+	
 	
 	public Tamanho() {
 		
@@ -49,12 +49,15 @@ public class Tamanho {
 	public void setTamanho(Double tamanho) {
 		this.tamanho = tamanho;
 	}
+	
+	
 
-	public Bolo getBolo() {
+	
+	public List<Bolo> getBolo() {
 		return bolo;
 	}
 
-	public void setBolo(Bolo bolo) {
+	public void setBolo(List<Bolo> bolo) {
 		this.bolo = bolo;
 	}
 

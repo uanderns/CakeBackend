@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cakedeliver.cakedeliver.enums.PedidoStatus;
@@ -24,8 +26,8 @@ public class Pedido implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) //auto incremento no banco
+	@Column(name="idpedido")
 	private Long id;
-	
 	private String endereco;
 	private Double latitude; //armazenar geolocalização
 	private Double longitude; //armazenar geolocalização
@@ -34,10 +36,17 @@ public class Pedido implements Serializable {
 	private PedidoStatus status; //atributo da classe enum
 	
 	@ManyToMany //Annotation de relacionamento de muitos pra muitos
+	@JoinTable(name = "tb_pedido_bolo", // tabela de associação
+	joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
+	inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
 	
-	@JoinTable(name = "tb_pedido_bolo_tipo", // tabela de associação
-		joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
-		inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
+	//@ManyToOne //muitos pedidos para uma avaliação
+	//@JoinColumn(name="avaliacaopedido",nullable=false)
+	//private AvaliacaoPedido avaliacaopedido;
+	
+	//@ManyToOne //muitos pedidos para um cancelamento
+	//@JoinColumn(name="cancelamento",nullable=false)
+	//private Cancelamento cancelamento;
 	
 	//para nao repetir os bolos no mesmo pedido
 	private Set<Bolo> bolos = new HashSet<>();
@@ -104,6 +113,12 @@ public class Pedido implements Serializable {
 
 	public Set<Bolo> getBolos() {
 		return bolos;
+	}
+	
+	
+
+	public void setBolos(Set<Bolo> bolos) {
+		this.bolos = bolos;
 	}
 
 	@Override

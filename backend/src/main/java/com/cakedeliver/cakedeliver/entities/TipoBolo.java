@@ -1,11 +1,13 @@
 package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +22,8 @@ public class TipoBolo implements Serializable {
 	private String nomeTipo;
 	
 	
-	@ManyToOne // muitos tipos para um bolo
-	private Bolo bolo;
+	@OneToMany // um tipo tem muitos bolos
+	private List <Bolo> bolo;
 	
 	
 	public TipoBolo() {
@@ -52,17 +54,6 @@ public class TipoBolo implements Serializable {
 	}
 	
 	
-
-	public Bolo getBolo() {
-		return bolo;
-	}
-
-
-	public void setBolo(Bolo bolo) {
-		this.bolo = bolo;
-	}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -70,6 +61,18 @@ public class TipoBolo implements Serializable {
 		result = prime * result + ((idTipo == null) ? 0 : idTipo.hashCode());
 		return result;
 	}
+	
+	
+
+	public List<Bolo> getBolo() {
+		return bolo;
+	}
+
+
+	public void setBolo(List<Bolo> bolo) {
+		this.bolo = bolo;
+	}
+
 
 	@Override
 	public boolean equals(Object obj) {

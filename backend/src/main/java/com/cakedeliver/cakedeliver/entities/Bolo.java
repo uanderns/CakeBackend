@@ -1,15 +1,13 @@
 package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,14 +24,17 @@ public class Bolo implements Serializable{
 	private String nome;
 	private Double preco;
 	
-	@OneToMany // um bolo para muitos tipos
-	private List <TipoBolo> tipobolo;
+	@ManyToOne // muitos bolos para um tipo
+	@JoinColumn(name="tipobolo",nullable=false)
+	private TipoBolo tipobolo;
 	
-	@OneToOne  // um bolo para um sabor
+	@ManyToOne  // muitos bolos para um sabor
+	@JoinColumn(name="sabor",nullable=false)
 	private Sabor sabor;
 	
-	@OneToMany //um bolo para varios sabores
-	private List <Tamanho> tamanho;
+	@ManyToOne // muitos tamanhos para um bolo
+    @JoinColumn(name ="tamanho", nullable = false)
+	private Tamanho tamanho;
 		
 
 	public Bolo() {}
@@ -46,12 +47,13 @@ public class Bolo implements Serializable{
 				
 	}
 
-	public Long getId() {
+	
+	public Long getIdBolo() {
 		return idBolo;
 	}
 
-	public void setId(Long id) {
-		this.idBolo = id;
+	public void setIdBolo(Long idBolo) {
+		this.idBolo = idBolo;
 	}
 
 	public String getNome() {
@@ -69,8 +71,32 @@ public class Bolo implements Serializable{
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
+	
+			
+	public TipoBolo getTipobolo() {
+		return tipobolo;
+	}
 
-		
+	public void setTipobolo(TipoBolo tipobolo) {
+		this.tipobolo = tipobolo;
+	}
+
+	public Sabor getSabor() {
+		return sabor;
+	}
+
+	public void setSabor(Sabor sabor) {
+		this.sabor = sabor;
+	}
+
+	public Tamanho getTamanho() {
+		return tamanho;
+	}
+
+	public void setTamanho(Tamanho tamanho) {
+		this.tamanho = tamanho;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
