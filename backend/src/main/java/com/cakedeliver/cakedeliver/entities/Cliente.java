@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -13,27 +16,29 @@ public class Cliente extends Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idCliente;
 	private Boolean ativo = true;
 	private Date dataCadastro;
-	private String senha;
-	private String email;
+	
 	
 	@ManyToOne
 	private Pedido pedido;
 
-	public Cliente() {}
-
-	public Cliente(String senha, String email) {
-		super();
-		this.senha = senha;
-		this.email = email;
+	public Cliente() {
+		
 	}
 
-	public Cliente( Boolean ativo, Date dataCadastro) {
+	
+
+	public Cliente(Long idCliente, Boolean ativo, Date dataCadastro) {
 		super();
+		this.idCliente = idCliente;
 		this.ativo = ativo;
 		this.dataCadastro = dataCadastro;
 	}
+
 
 	public Boolean getAtivo() {
 		return ativo;
@@ -50,20 +55,53 @@ public class Cliente extends Usuario implements Serializable{
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
+
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((idCliente == null) ? 0 : idCliente.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		if (idCliente == null) {
+			if (other.idCliente != null)
+				return false;
+		} else if (!idCliente.equals(other.idCliente))
+			return false;
+		return true;
+	}
 	
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
+	
+	
 }

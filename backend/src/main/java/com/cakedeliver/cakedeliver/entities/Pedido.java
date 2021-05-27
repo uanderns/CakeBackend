@@ -3,6 +3,7 @@ package com.cakedeliver.cakedeliver.entities;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.cakedeliver.cakedeliver.enums.PedidoStatus;
@@ -47,6 +49,13 @@ public class Pedido implements Serializable {
 	//@ManyToOne //muitos pedidos para um cancelamento
 	//@JoinColumn(name="cancelamento",nullable=false)
 	//private Cancelamento cancelamento;
+	
+	@OneToMany
+	private List <Cliente> cliente;
+	
+	@OneToMany
+	private List <Entregador> entregador;
+		
 	
 	//para nao repetir os bolos no mesmo pedido
 	private Set<Bolo> bolos = new HashSet<>();
