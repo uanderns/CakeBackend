@@ -1,6 +1,7 @@
 package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
+
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
+
 
 @Entity
 @Table(name ="tb_sabor")
@@ -25,7 +29,7 @@ public class Sabor implements Serializable{
 	private String imagemUrl;
 	
 	@OneToMany // um sabor para muitos bolos
-	private List <Bolo> bolo;
+	private List <Bolo> bolos;
 	
 	public Sabor() {
 		
@@ -76,12 +80,12 @@ public class Sabor implements Serializable{
 	
 	
 	public List<Bolo> getBolo() {
-		return bolo;
+		return bolos;
 	}
 
 
 	public void setBolo(List<Bolo> bolo) {
-		this.bolo = bolo;
+		this.bolos = bolo;
 	}
 
 
@@ -111,7 +115,12 @@ public class Sabor implements Serializable{
 			return false;
 		return true;
 	}
+
+
 	
+
+
+
 	
 	
 	
