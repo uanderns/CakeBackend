@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_tipo_bolo")
 public class TipoBolo implements Serializable {
@@ -22,8 +24,9 @@ public class TipoBolo implements Serializable {
 	private String nomeTipo;
 	
 	
-	@OneToMany // um tipo tem muitos bolos
-	private List <Bolo> bolo;
+	//@OneToMany(mappedBy = "tipobolo") // um tipo tem muitos bolos
+	//@JsonIgnore
+	//private List <Bolo> bolo;
 	
 	
 	public TipoBolo() {
@@ -64,14 +67,14 @@ public class TipoBolo implements Serializable {
 	
 	
 
-	public List<Bolo> getBolo() {
-		return bolo;
-	}
+	//public List<Bolo> getBolo() {
+		//return bolo;
+	//}
 
 
-	public void setBolo(List<Bolo> bolo) {
-		this.bolo = bolo;
-	}
+	//public void setBolo(List<Bolo> bolo) {
+		//this.bolo = bolo;
+	//}
 
 
 	@Override

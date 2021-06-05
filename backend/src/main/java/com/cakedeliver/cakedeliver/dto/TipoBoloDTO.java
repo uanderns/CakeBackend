@@ -31,7 +31,7 @@ public TipoBoloDTO(TipoBolo entity) {
 		
 		idTipo = entity.getIdTipo();
 		nomeTipo = entity.getNomeTipo();
-		bolos = entity.getBolo().stream().map(x -> new BoloDTO(x)).collect(Collectors.toList());
+		//bolos = entity.getBolo().stream().map(x -> new BoloDTO(x)).collect(Collectors.toList());
 	}
 
 

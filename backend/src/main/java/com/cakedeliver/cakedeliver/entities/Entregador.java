@@ -16,8 +16,8 @@ public class Entregador {
 	private Long idEntregador;
 	private String docVeiculo;
 	
-	@ManyToOne
-	private Pedido pedido;
+	//@ManyToOne
+	//private Pedido pedido;
 	
 	
 	public Entregador() {
@@ -47,13 +47,13 @@ public class Entregador {
 	}
 	
 	
-	public Pedido getPedido() {
-		return pedido;
-	}
+	//public Pedido getPedido() {
+		//return pedido;
+	//}
 
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
+	//public void setPedido(Pedido pedido) {
+		//this.pedido = pedido;
+	//}
 
 	@Override
 	public int hashCode() {

@@ -46,7 +46,7 @@ public PedidoDTO(Pedido entity) {
 		longitude = entity.getLongitude();
 	    moment = entity.getMoment();
 		status = entity.getStatus();
-		bolos = entity.getBolos().stream().map(x -> new BoloDTO(x)).collect(Collectors.toList());
+		//bolos = entity.getBolos().stream().map(x -> new BoloDTO(x)).collect(Collectors.toList());
 	}
 
 

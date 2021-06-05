@@ -24,17 +24,17 @@ public class Bolo implements Serializable{
 	private String nome;
 	private Double preco;
 	
-	@ManyToOne // muitos bolos para um tipo
-	@JoinColumn(name="tipobolo",nullable=false)
-	private TipoBolo tipobolo;
+	//@ManyToOne // muitos bolos para um tipo
+	//@JoinColumn(name="tipobolo_id",nullable=false)
+	//private TipoBolo tipobolo;
 	
-	@ManyToOne  // muitos bolos para um sabor
-	@JoinColumn(name="sabor",nullable=false)
-	private Sabor sabor;
+	//@ManyToOne  // muitos bolos para um sabor
+	//@JoinColumn(name="sabor_id",nullable=false)
+	//private Sabor sabor;
 	
-	@ManyToOne // muitos tamanhos para um bolo
-    @JoinColumn(name ="tamanho", nullable = false)
-	private Tamanho tamanho;
+	//@ManyToOne // muitos tamanhos para um bolo
+   // @JoinColumn(name ="tamanho_id", nullable = false)
+	//private Tamanho tamanho;
 		
 
 	public Bolo() {}
@@ -73,29 +73,29 @@ public class Bolo implements Serializable{
 	}
 	
 			
-	public TipoBolo getTipobolo() {
-		return tipobolo;
-	}
+	//public TipoBolo getTipobolo() {
+		//return tipobolo;
+	//}
 
-	public void setTipobolo(TipoBolo tipobolo) {
-		this.tipobolo = tipobolo;
-	}
+	//public void setTipobolo(TipoBolo tipobolo) {
+		//this.tipobolo = tipobolo;
+	//}
 
-	public Sabor getSabor() {
-		return sabor;
-	}
+	//public Sabor getSabor() {
+		//return sabor;
+	//}
 
-	public void setSabor(Sabor sabor) {
-		this.sabor = sabor;
-	}
+	//public void setSabor(Sabor sabor) {
+		//this.sabor = sabor;
+	//}
 
-	public Tamanho getTamanho() {
-		return tamanho;
-	}
+	//public Tamanho getTamanho() {
+		//return tamanho;
+	//}
 
-	public void setTamanho(Tamanho tamanho) {
-		this.tamanho = tamanho;
-	}
+	//public void setTamanho(Tamanho tamanho) {
+		//this.tamanho = tamanho;
+	//}
 
 	@Override
 	public int hashCode() {

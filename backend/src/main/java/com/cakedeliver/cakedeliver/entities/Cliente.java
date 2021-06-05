@@ -23,8 +23,8 @@ public class Cliente extends Usuario implements Serializable{
 	private Date dataCadastro;
 	
 	
-	@ManyToOne
-	private Pedido pedido;
+	//@ManyToOne
+	//private Pedido pedido;
 
 	public Cliente() {
 		
@@ -64,13 +64,13 @@ public class Cliente extends Usuario implements Serializable{
 		this.idCliente = idCliente;
 	}
 
-	public Pedido getPedido() {
-		return pedido;
-	}
+	//public Pedido getPedido() {
+		//return pedido;
+	//}
 
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
+	//public void setPedido(Pedido pedido) {
+		//this.pedido = pedido;
+	//}
 
 
 

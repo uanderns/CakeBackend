@@ -5,7 +5,6 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,10 +36,10 @@ public class Pedido implements Serializable {
 	private Instant moment; //Instante em que o pedido foi feito
 	private PedidoStatus status; //atributo da classe enum
 	
-	@ManyToMany //Annotation de relacionamento de muitos pra muitos
-	@JoinTable(name = "tb_pedido_bolo", // tabela de associação
-	joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
-	inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
+	//@ManyToMany //Annotation de relacionamento de muitos pra muitos
+	//@JoinTable(name = "tb_pedido_bolo", // tabela de associação
+	//joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
+	//inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
 	
 	//@ManyToOne //muitos pedidos para uma avaliação
 	//@JoinColumn(name="avaliacaopedido",nullable=false)
@@ -50,15 +49,15 @@ public class Pedido implements Serializable {
 	//@JoinColumn(name="cancelamento",nullable=false)
 	//private Cancelamento cancelamento;
 	
-	@OneToMany
-	private List <Cliente> cliente;
+	//@OneToMany
+	//private List <Cliente> cliente;
 	
-	@OneToMany
-	private List <Entregador> entregador;
+	//@OneToMany
+	//private List <Entregador> entregador;
 		
 	
 	//para nao repetir os bolos no mesmo pedido
-	private Set<Bolo> bolos = new HashSet<>();
+	//private Set<Bolo> bolos = new HashSet<>();
 	
 	public Pedido() {}
 
@@ -120,15 +119,15 @@ public class Pedido implements Serializable {
 		this.status = status;
 	}
 
-	public Set<Bolo> getBolos() {
-		return bolos;
-	}
+	//public Set<Bolo> getBolos() {
+		//return bolos;
+	//}
 	
 	
 
-	public void setBolos(Set<Bolo> bolos) {
-		this.bolos = bolos;
-	}
+	//public void setBolos(Set<Bolo> bolos) {
+		//this.bolos = bolos;
+	//}
 
 	@Override
 	public int hashCode() {

@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -28,8 +28,9 @@ public class Sabor implements Serializable{
 	private String descricao;
 	private String imagemUrl;
 	
-	@OneToMany // um sabor para muitos bolos
-	private List <Bolo> bolos;
+	//@OneToMany(mappedBy = "sabor") // um sabor para muitos bolos
+	//@JsonIgnore
+	//private List <Bolo> bolos;
 	
 	public Sabor() {
 		
@@ -79,14 +80,14 @@ public class Sabor implements Serializable{
 	}
 	
 	
-	public List<Bolo> getBolo() {
-		return bolos;
-	}
+	//public List<Bolo> getBolo() {
+		//return bolos;
+	//}
 
 
-	public void setBolo(List<Bolo> bolo) {
-		this.bolos = bolo;
-	}
+	//public void setBolo(List<Bolo> bolo) {
+		//this.bolos = bolo;
+	//}
 
 
 	@Override

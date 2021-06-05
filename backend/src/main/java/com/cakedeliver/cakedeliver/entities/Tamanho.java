@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_tamanho")
 public class Tamanho {
@@ -20,8 +22,9 @@ public class Tamanho {
 	
 	
 	
-	@OneToMany // muitos bolos para um tamanho
-	private List <Bolo> bolo;
+	//@OneToMany(mappedBy = "tamanho") // muitos bolos para um tamanho
+	//@JsonIgnore
+	//private List <Bolo> bolo;
 	
 	
 	public Tamanho() {
@@ -53,13 +56,13 @@ public class Tamanho {
 	
 
 	
-	public List<Bolo> getBolo() {
-		return bolo;
-	}
+	//public List<Bolo> getBolo() {
+		//return bolo;
+	//}
 
-	public void setBolo(List<Bolo> bolo) {
-		this.bolo = bolo;
-	}
+	//public void setBolo(List<Bolo> bolo) {
+		//this.bolo = bolo;
+	//}
 
 	@Override
 	public int hashCode() {
