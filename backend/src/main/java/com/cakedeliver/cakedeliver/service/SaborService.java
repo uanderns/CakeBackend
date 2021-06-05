@@ -10,22 +10,22 @@ import com.cakedeliver.cakedeliver.repository.SaborRepository;
 public class SaborService {
 	
 	@Autowired
-	private SaborRepository repo;
+	private SaborRepository repository;
 	
 	public List<Sabor> listAll(){
-		return repo.findAll();
+		return repository.findAll();
 	}	
 	
 	public void save(Sabor sabor) {
-		repo.save(sabor);
+		repository.save(sabor);
 	}
 	
 	public Sabor get(Long id) {
-		return repo.findById(id).get();
+		return repository.findById(id).get();
 	}
 	
 	public void delete(Long id) {
-		repo.deleteById(id);
+		repository.deleteById(id);
 	}
 
 }
