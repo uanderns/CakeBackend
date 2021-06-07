@@ -30,9 +30,7 @@ public class Cliente extends Usuario implements Serializable{
 		
 	}
 
-	
-
-	public Cliente(Long idCliente, Boolean ativo, Date dataCadastro) {
+		public Cliente(Long idCliente, Boolean ativo, Date dataCadastro) {
 		super();
 		this.idCliente = idCliente;
 		this.ativo = ativo;

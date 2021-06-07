@@ -17,37 +17,39 @@ public class Bolo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto incremento no banco
+	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO) //auto incremento no banco
 	@Column(name="idbolo")
 	private Long idBolo;
-	
 	private String nome;
 	private Double preco;
 	
-	//@ManyToOne // muitos bolos para um tipo
-	//@JoinColumn(name="tipobolo_id",nullable=false)
-	//private TipoBolo tipobolo;
 	
-	//@ManyToOne  // muitos bolos para um sabor
-	//@JoinColumn(name="sabor_id",nullable=false)
-	//private Sabor sabor;
+	// Bolo pertence a 1 sabor
+	@ManyToOne  // muitos bolos para um sabor
+	@JoinColumn(name="idsabor",nullable=false)
+    private Sabor sabor;
 	
-	//@ManyToOne // muitos tamanhos para um bolo
-   // @JoinColumn(name ="tamanho_id", nullable = false)
-	//private Tamanho tamanho;
 		
 
 	public Bolo() {}
 
-	public Bolo(Long idBolo, String nome, Double preco,Double tamanho) {
+		
+	
+	public Bolo(Long idBolo, String nome, Double preco, Sabor sabor) {
 		super();
 		this.idBolo = idBolo;
 		this.nome = nome;
 		this.preco = preco;
-				
+		this.sabor = sabor;
 	}
 
-	
+
+	@Override
+	public String toString() {
+		return "Bolo [idBolo=" + idBolo + ", nome=" + nome + ", preco=" + preco + "]";
+	}
+
+
 	public Long getIdBolo() {
 		return idBolo;
 	}
@@ -72,31 +74,19 @@ public class Bolo implements Serializable{
 		this.preco = preco;
 	}
 	
+
+	public Sabor getSabore() {
+		return sabor;
+	}
+
+
+
+	public void setSabore(Sabor sabor) {
+		this.sabor = sabor;
+	}
+
 			
-	//public TipoBolo getTipobolo() {
-		//return tipobolo;
-	//}
-
-	//public void setTipobolo(TipoBolo tipobolo) {
-		//this.tipobolo = tipobolo;
-	//}
-
-	//public Sabor getSabor() {
-		//return sabor;
-	//}
-
-	//public void setSabor(Sabor sabor) {
-		//this.sabor = sabor;
-	//}
-
-	//public Tamanho getTamanho() {
-		//return tamanho;
-	//}
-
-	//public void setTamanho(Tamanho tamanho) {
-		//this.tamanho = tamanho;
-	//}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,6 +94,9 @@ public class Bolo implements Serializable{
 		result = prime * result + ((idBolo == null) ? 0 : idBolo.hashCode());
 		return result;
 	}
+
+
+
 
 	@Override
 	public boolean equals(Object obj) {

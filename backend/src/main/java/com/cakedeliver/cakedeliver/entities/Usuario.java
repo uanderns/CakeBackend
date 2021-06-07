@@ -29,10 +29,11 @@ public abstract class Usuario implements Serializable {
 	@Size(min = 2, max = 50, message = "O Nome do Usuário deve ter entre 2 e 50 caracteres")
 	private String nome;
 	
+		
 	@NotNull(message = "O Usuário deve possuir no minímo um número de telefone")
 	private Integer telefone;
 	
-	@Column(length = 11)
+	@Column(length = 11, unique = true)
 	@Size(min = 11, max = 11, message = "O CPF do Usuário deve conter 11 digitos")
 	private Integer cpf;
 		

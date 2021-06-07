@@ -3,14 +3,14 @@ package com.cakedeliver.cakedeliver.entities;
 import java.io.Serializable;
 
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -21,30 +21,42 @@ public class Sabor implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
+	@Column(name = "idsabor")
 	private Long idSabor;
 	
 	private String nome;
 	private String descricao;
 	private String imagemUrl;
 	
-	//@OneToMany(mappedBy = "sabor") // um sabor para muitos bolos
-	//@JsonIgnore
-	//private List <Bolo> bolos;
+	//Sabor tem muitos bolos
+	@OneToMany(mappedBy = "sabor") 
+	private List<Bolo> bolos;
 	
 	public Sabor() {
 		
 	}
 	
 	
+
+
 	public Sabor(Long idSabor, String nome, String descricao, String imagemUrl) {
 		super();
 		this.idSabor = idSabor;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.imagemUrl = imagemUrl;
+		
 	}
 
+
+
+
+	@Override
+	public String toString() {
+		return "Sabor [idSabor=" + idSabor + ", nome=" + nome + ", descricao=" + descricao + ", imagemUrl=" + imagemUrl
+				+ "]";
+	}
 
 
 	public Long getIdSabor() {
@@ -80,16 +92,6 @@ public class Sabor implements Serializable{
 	}
 	
 	
-	//public List<Bolo> getBolo() {
-		//return bolos;
-	//}
-
-
-	//public void setBolo(List<Bolo> bolo) {
-		//this.bolos = bolo;
-	//}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
