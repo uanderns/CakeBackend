@@ -46,7 +46,6 @@ public class Sabor implements Serializable{
 	}
 	
 
-
 	public Sabor(Long idSabor, String nome, String descricao, String imagemUrl, Set<Bolo> bolos) {
 		super();
 		this.idSabor = idSabor;

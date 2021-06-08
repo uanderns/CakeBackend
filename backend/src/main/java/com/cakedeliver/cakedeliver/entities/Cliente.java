@@ -2,23 +2,22 @@ package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_cliente")
-public class Cliente extends Usuario implements Serializable{
+public class Cliente implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
 	private Long idCliente;
+	
 	private Boolean ativo = true;
 	private Date dataCadastro;
 	
@@ -62,16 +61,7 @@ public class Cliente extends Usuario implements Serializable{
 		this.idCliente = idCliente;
 	}
 
-	//public Pedido getPedido() {
-		//return pedido;
-	//}
-
-	//public void setPedido(Pedido pedido) {
-		//this.pedido = pedido;
-	//}
-
-
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -79,7 +69,6 @@ public class Cliente extends Usuario implements Serializable{
 		result = prime * result + ((idCliente == null) ? 0 : idCliente.hashCode());
 		return result;
 	}
-
 
 
 	@Override

@@ -12,8 +12,9 @@ import javax.persistence.Table;
 public class Entregador {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
 	private Long idEntregador;
+	
 	private String docVeiculo;
 	
 	//@ManyToOne

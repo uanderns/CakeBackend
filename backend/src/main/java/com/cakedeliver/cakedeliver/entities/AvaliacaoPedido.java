@@ -1,19 +1,26 @@
 package com.cakedeliver.cakedeliver.entities;
 
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.cakedeliver.cakedeliver.enums.ClassificacaoAvaliacao;
 
-public class AvaliacaoPedido {
+@Entity
+@Table(name ="tb_avaliacao")
+public class AvaliacaoPedido implements Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto incremento no banco
+	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO) //auto incremento no banco
 	private Long idAvaliacao;
 	private String comentario;
 	private ClassificacaoAvaliacao classificacao;
@@ -22,8 +29,7 @@ public class AvaliacaoPedido {
 	//@OneToMany // uma avaliacao para muitos pedidos
 	//private List <Pedido> pedido;
 
-	
-	
+		
 	public AvaliacaoPedido() {
 		
 	}

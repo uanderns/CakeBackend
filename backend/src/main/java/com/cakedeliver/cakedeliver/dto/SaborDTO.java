@@ -34,7 +34,7 @@ public class SaborDTO {
 		nome = entity.getNome();
 		descricao = entity.getDescricao();
 		imagemUrl = entity.getImagemUrl();
-		//bolos = entity.getBolo().stream().map(x -> new BoloDTO(x)).collect(Collectors.toList());
+		
 	}
 
 	public Long getIdSabor() {
