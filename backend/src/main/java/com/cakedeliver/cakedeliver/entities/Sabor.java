@@ -1,16 +1,22 @@
 package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -31,24 +37,24 @@ public class Sabor implements Serializable{
 	
 	//Sabor tem muitos bolos
 	@OneToMany(mappedBy = "sabor") 
-	private List<Bolo> bolos;
+	@JsonIgnore
+	private Set <Bolo> bolos;
+	
 	
 	public Sabor() {
 		
 	}
 	
-	
 
 
-	public Sabor(Long idSabor, String nome, String descricao, String imagemUrl) {
+	public Sabor(Long idSabor, String nome, String descricao, String imagemUrl, Set<Bolo> bolos) {
 		super();
 		this.idSabor = idSabor;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.imagemUrl = imagemUrl;
-		
+		this.bolos = bolos;
 	}
-
 
 
 
@@ -92,6 +98,18 @@ public class Sabor implements Serializable{
 	}
 	
 	
+	public Set<Bolo> getBolos() {
+		return bolos;
+	}
+
+
+
+	public void setBolos(Set<Bolo> bolos) {
+		this.bolos = bolos;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

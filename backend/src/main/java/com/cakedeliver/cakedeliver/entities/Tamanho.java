@@ -1,7 +1,13 @@
 package com.cakedeliver.cakedeliver.entities;
 
+import java.util.ArrayList;
 import java.util.List;
+
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +16,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+
 @Entity
 @Table(name = "tb_tamanho")
 public class Tamanho {
@@ -17,25 +25,29 @@ public class Tamanho {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto incremento no banco
+	@Column(name = "idtamanho")
  	private Long idTamanho;
 	private Double tamanho;
 	
 	
 	
-	//@OneToMany(mappedBy = "tamanho") // muitos bolos para um tamanho
-	//@JsonIgnore
-	//private List <Bolo> bolo;
+	@OneToMany(mappedBy = "tamanho") // muitos bolos para um tamanho
+	@JsonIgnore
+	private List <Bolo> bolos;
 	
 	
 	public Tamanho() {
 		
 	}
 
-	public Tamanho(Long idTamanho, Double tamanho) {
+	
+	public Tamanho(Long idTamanho, Double tamanho, List<Bolo> bolos) {
 		super();
 		this.idTamanho = idTamanho;
 		this.tamanho = tamanho;
+		this.bolos = bolos;
 	}
+
 
 	public Long getIdTamanho() {
 		return idTamanho;
@@ -55,14 +67,12 @@ public class Tamanho {
 	
 	
 
-	
-	//public List<Bolo> getBolo() {
-		//return bolo;
-	//}
+	public List<Bolo> getBolos() {
+		return bolos;
+	}
 
-	//public void setBolo(List<Bolo> bolo) {
-		//this.bolo = bolo;
-	//}
+
+
 
 	@Override
 	public int hashCode() {

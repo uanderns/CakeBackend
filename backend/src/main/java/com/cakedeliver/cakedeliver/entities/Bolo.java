@@ -30,24 +30,41 @@ public class Bolo implements Serializable{
     private Sabor sabor;
 	
 		
+	@ManyToOne
+	@JoinColumn(name="idtipobolo",nullable=false)
+	private TipoBolo tipobolo;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="idtamanho",nullable=false)
+	private Tamanho tamanho;
+	
+		
 
 	public Bolo() {}
 
 		
 	
-	public Bolo(Long idBolo, String nome, Double preco, Sabor sabor) {
+	public Bolo(Long idBolo, String nome, Double preco, Sabor sabor,TipoBolo tipobolo,Tamanho tamanho) {
 		super();
 		this.idBolo = idBolo;
 		this.nome = nome;
 		this.preco = preco;
 		this.sabor = sabor;
+		this.tipobolo = tipobolo;
+		this.tamanho = tamanho;
+		
 	}
+
+	
 
 
 	@Override
 	public String toString() {
-		return "Bolo [idBolo=" + idBolo + ", nome=" + nome + ", preco=" + preco + "]";
+		return "Bolo [idBolo=" + idBolo + ", nome=" + nome + ", preco=" + preco + ", sabor=" + sabor + ", tipobolo="
+				+ tipobolo + "]";
 	}
+
 
 
 	public Long getIdBolo() {
@@ -80,13 +97,45 @@ public class Bolo implements Serializable{
 	}
 
 
-
 	public void setSabore(Sabor sabor) {
 		this.sabor = sabor;
 	}
-
-			
 	
+				
+	
+	public Sabor getSabor() {
+		return sabor;
+	}
+
+
+	public void setSabor(Sabor sabor) {
+		this.sabor = sabor;
+	}
+
+
+	public TipoBolo getTipobolo() {
+		return tipobolo;
+	}
+	
+	
+	public Tamanho getTamanho() {
+		return tamanho;
+	}
+
+
+
+	public void setTamanho(Tamanho tamanho) {
+		this.tamanho = tamanho;
+	}
+
+
+
+	public void setTipobolo(TipoBolo tipobolo) {
+		this.tipobolo = tipobolo;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -94,8 +143,6 @@ public class Bolo implements Serializable{
 		result = prime * result + ((idBolo == null) ? 0 : idBolo.hashCode());
 		return result;
 	}
-
-
 
 
 	@Override

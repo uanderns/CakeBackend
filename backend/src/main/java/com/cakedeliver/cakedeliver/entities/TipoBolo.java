@@ -1,9 +1,14 @@
 package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +17,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
 @Table(name = "tb_tipo_bolo")
 public class TipoBolo implements Serializable {
@@ -19,26 +25,30 @@ public class TipoBolo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
+	@Column(name = "idtipobolo")
 	private Long idTipo;
 	private String nomeTipo;
 	
 	
-	//@OneToMany(mappedBy = "tipobolo") // um tipo tem muitos bolos
-	//@JsonIgnore
-	//private List <Bolo> bolo;
+	@OneToMany(mappedBy = "tipobolo") // um tipo tem muitos bolos
+	@JsonIgnore
+	private List <Bolo> bolos;
 	
 	
 	public TipoBolo() {
 		
 	}
-
 	
-	public TipoBolo(Long idTipo, String nomeTipo) {
+
+	public TipoBolo(Long idTipo, String nomeTipo, List<Bolo> bolos) {
 		super();
 		this.idTipo = idTipo;
 		this.nomeTipo = nomeTipo;
+		this.bolos = bolos;
 	}
+
+
 
 	public Long getIdTipo() {
 		return idTipo;
@@ -57,6 +67,17 @@ public class TipoBolo implements Serializable {
 	}
 	
 	
+
+	public List<Bolo> getBolos() {
+		return bolos;
+	}
+
+
+	public void setBolos(List<Bolo> bolos) {
+		this.bolos = bolos;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -66,16 +87,6 @@ public class TipoBolo implements Serializable {
 	}
 	
 	
-
-	//public List<Bolo> getBolo() {
-		//return bolo;
-	//}
-
-
-	//public void setBolo(List<Bolo> bolo) {
-		//this.bolo = bolo;
-	//}
-
 
 	@Override
 	public boolean equals(Object obj) {
