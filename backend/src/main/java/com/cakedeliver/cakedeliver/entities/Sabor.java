@@ -56,13 +56,7 @@ public class Sabor implements Serializable{
 	}
 
 
-
-	@Override
-	public String toString() {
-		return "Sabor [idSabor=" + idSabor + ", nome=" + nome + ", descricao=" + descricao + ", imagemUrl=" + imagemUrl
-				+ "]";
-	}
-
+	
 
 	public Long getIdSabor() {
 		return idSabor;

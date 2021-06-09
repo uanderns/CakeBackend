@@ -16,3 +16,6 @@ insert into tb_entregador(doc_veiculo) values ('PLACAY');
 
 insert into tb_avaliacao(classificacao,comentario) values (1, 'gostei muito');
 insert into tb_avaliacao(classificacao,comentario) values (3, 'o bolo estava muito doce');
+
+insert into tb_cancelamento(motivo) values ('bolo chegou desconfigurado');
+insert into tb_cancelamento(motivo) values ('bolo chegou com muito atraso na entrega');

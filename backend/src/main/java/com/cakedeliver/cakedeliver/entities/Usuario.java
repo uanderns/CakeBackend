@@ -16,7 +16,7 @@ import com.cakedeliver.cakedeliver.enums.GeneroStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @MappedSuperclass //para a heranças das classes que herdarao
-public abstract class Usuario implements Serializable {
+public class Usuario implements Serializable {
 		
 	private static final long serialVersionUID = 1L;
 	
