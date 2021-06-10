@@ -2,24 +2,33 @@ package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "tb_cliente")
-public class Cliente implements Serializable{
-
+public  class Cliente extends Usuario implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
 	private Long idCliente;
 	
+	@Column(unique = true)
+	
+	
+	private String email;
+	private String senha;
 	private Boolean ativo = true;
-	private Date dataCadastro;
+	
 	
 	
 	//@ManyToOne
@@ -29,12 +38,19 @@ public class Cliente implements Serializable{
 		
 	}
 
-		public Cliente(Long idCliente, Boolean ativo, Date dataCadastro) {
+	
+
+
+	public Cliente(Long idCliente, String email, String senha, Boolean ativo) {
 		super();
 		this.idCliente = idCliente;
+		this.email = email;
+		this.senha = senha;
 		this.ativo = ativo;
-		this.dataCadastro = dataCadastro;
+		
 	}
+
+
 
 
 	public Boolean getAtivo() {
@@ -44,15 +60,7 @@ public class Cliente implements Serializable{
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-
-	public Date getDataCadastro() {
-		return dataCadastro;
-	}
-
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
+	
 	public Long getIdCliente() {
 		return idCliente;
 	}
@@ -60,8 +68,29 @@ public class Cliente implements Serializable{
 	public void setIdCliente(Long idCliente) {
 		this.idCliente = idCliente;
 	}
-
 	
+		
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

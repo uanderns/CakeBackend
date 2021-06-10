@@ -8,12 +8,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_administrador")
-public class Administrador {
+public class Administrador extends Funcionario {
 
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
 	private Long idAdm;
-	
 	private Boolean ativo = true;
 	
 	

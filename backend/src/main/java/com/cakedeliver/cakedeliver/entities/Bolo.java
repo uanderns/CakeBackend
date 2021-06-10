@@ -57,8 +57,6 @@ public class Bolo implements Serializable{
 	}
 
 	
-
-
 	@Override
 	public String toString() {
 		return "Bolo [idBolo=" + idBolo + ", nome=" + nome + ", preco=" + preco + ", sabor=" + sabor + ", tipobolo="
@@ -91,17 +89,7 @@ public class Bolo implements Serializable{
 		this.preco = preco;
 	}
 	
-
-	public Sabor getSabore() {
-		return sabor;
-	}
-
-
-	public void setSabore(Sabor sabor) {
-		this.sabor = sabor;
-	}
-	
-				
+					
 	
 	public Sabor getSabor() {
 		return sabor;

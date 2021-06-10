@@ -9,12 +9,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_entregador")
-public class Entregador {
+public class Entregador extends Usuario {
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
 	private Long idEntregador;
-	
 	private String docVeiculo;
 	
 	//@ManyToOne

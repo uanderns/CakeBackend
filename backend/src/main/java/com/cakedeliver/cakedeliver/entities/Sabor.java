@@ -96,7 +96,6 @@ public class Sabor implements Serializable{
 	}
 
 
-
 	public void setBolos(Set<Bolo> bolos) {
 		this.bolos = bolos;
 	}

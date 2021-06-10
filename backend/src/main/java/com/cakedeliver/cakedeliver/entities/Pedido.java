@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.cakedeliver.cakedeliver.enums.PedidoStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_pedido")
@@ -26,7 +27,7 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) //auto incremento no banco
+	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO) //auto incremento no banco
 	@Column(name="idpedido")
 	private Long id;
 	private String endereco;
@@ -36,10 +37,15 @@ public class Pedido implements Serializable {
 	private Instant moment; //Instante em que o pedido foi feito
 	private PedidoStatus status; //atributo da classe enum
 	
-	//@ManyToMany //Annotation de relacionamento de muitos pra muitos
-	//@JoinTable(name = "tb_pedido_bolo", // tabela de associação
-	//joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
-	//inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
+	@ManyToMany //Annotation de relacionamento de muitos pra muitos
+	@JoinTable(name = "tb_pedido_bolo", // tabela de associação
+	joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
+	inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
+	
+	//para nao repetir os bolos no mesmo pedido
+	@JsonIgnore
+	private Set<Bolo> bolos = new HashSet<>();
+	
 	
 	//@ManyToOne //muitos pedidos para uma avaliação
 	//@JoinColumn(name="avaliacaopedido",nullable=false)
@@ -49,6 +55,7 @@ public class Pedido implements Serializable {
 	//@JoinColumn(name="cancelamento",nullable=false)
 	//private Cancelamento cancelamento;
 	
+	
 	//@OneToMany
 	//private List <Cliente> cliente;
 	
@@ -56,12 +63,15 @@ public class Pedido implements Serializable {
 	//private List <Entregador> entregador;
 		
 	
-	//para nao repetir os bolos no mesmo pedido
-	//private Set<Bolo> bolos = new HashSet<>();
 	
-	public Pedido() {}
+	public Pedido() {
+		
+	}
 
-	public Pedido(Long id, String endereco, Double latitude, Double longitude, Instant moment, PedidoStatus status) {
+
+	
+	public Pedido(Long id, String endereco, Double latitude, Double longitude, Instant moment, PedidoStatus status,
+			Set<Bolo> bolos) {
 		super();
 		this.id = id;
 		this.endereco = endereco;
@@ -69,8 +79,11 @@ public class Pedido implements Serializable {
 		this.longitude = longitude;
 		this.moment = moment;
 		this.status = status;
+		this.bolos = bolos;
 	}
-	
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -119,15 +132,14 @@ public class Pedido implements Serializable {
 		this.status = status;
 	}
 
-	//public Set<Bolo> getBolos() {
-		//return bolos;
-	//}
-	
-	
+		
+	public Set<Bolo> getBolos() {
+		return bolos;
+	}
 
-	//public void setBolos(Set<Bolo> bolos) {
-		//this.bolos = bolos;
-	//}
+	public void setBolos(Set<Bolo> bolos) {
+		this.bolos = bolos;
+	}
 
 	@Override
 	public int hashCode() {
