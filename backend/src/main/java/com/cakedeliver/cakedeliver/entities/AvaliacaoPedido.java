@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.cakedeliver.cakedeliver.enums.ClassificacaoAvaliacao;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name ="tb_avaliacao")
@@ -23,26 +24,33 @@ public class AvaliacaoPedido implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO) //auto incremento no banco
-	@Column(name = "avaliacaopedido")
+	@Column(name = "idavaliacao")
 	private Long idAvaliacao;
 	private String comentario;
 	private ClassificacaoAvaliacao classificacao;
 	
 	
-	//@OneToMany // uma avaliacao para muitos pedidos
-	//private List <Pedido> pedido;
+	@OneToMany
+	(mappedBy ="avaliacaopedido")
+	@JsonIgnore
+	//uma avaliacao para muitos pedidos
+	private List <Pedido> pedido;
 
 		
 	public AvaliacaoPedido() {
 		
 	}
-	
-	public AvaliacaoPedido(Long idAvaliacao, String comentario, ClassificacaoAvaliacao classificacao) {
+		
+
+	public AvaliacaoPedido(Long idAvaliacao, String comentario, ClassificacaoAvaliacao classificacao,
+			List<Pedido> pedido) {
 		super();
 		this.idAvaliacao = idAvaliacao;
 		this.comentario = comentario;
 		this.classificacao = classificacao;
+		this.pedido = pedido;
 	}
+
 
 	public Long getIdAvaliacao() {
 		return idAvaliacao;
@@ -67,8 +75,20 @@ public class AvaliacaoPedido implements Serializable {
 	public void setClassificacao(ClassificacaoAvaliacao classificacao) {
 		this.classificacao = classificacao;
 	}
-
 	
+		
+	public List<Pedido> getPedido() {
+		return pedido;
+	}
+
+
+
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

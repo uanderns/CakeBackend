@@ -20,8 +20,8 @@ insert into tb_cancelamento(motivo) values ('bolo chegou desconfigurado');
 insert into tb_cancelamento(motivo) values ('bolo chegou com muito atraso na entrega');
 
 
-insert into tb_pedido (endereco, latitude, longitude, moment) VALUES ('Rua Projetada', -23.561680, -46.656139, TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z');
-insert into tb_pedido_bolo(pedido_id,bolo_id) values (1, 1);
+
+
 
 
 insert into tb_cliente(cpf,nome,telefone,email,senha) values ('12345678911','Joaquim','2199999999','joaquim@couves.com.br','padrao');

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,19 +38,18 @@ public class Pedido implements Serializable {
 	private Instant moment; //Instante em que o pedido foi feito
 	private PedidoStatus status; //atributo da classe enum
 	
-	@ManyToMany //Annotation de relacionamento de muitos pra muitos
+	@ManyToMany(fetch=FetchType.EAGER) //Annotation de relacionamento de muitos pra muitos
 	@JoinTable(name = "tb_pedido_bolo", // tabela de associação
 	joinColumns = @JoinColumn(name = "pedido_id"), //chave estrangeira
 	inverseJoinColumns = @JoinColumn(name = "bolo_id")) 
-	
 	//para nao repetir os bolos no mesmo pedido
-	@JsonIgnore
 	private Set<Bolo> bolos = new HashSet<>();
 	
 	
-	//@ManyToOne //muitos pedidos para uma avaliação
-	//@JoinColumn(name="avaliacaopedido",nullable=false)
-	//private AvaliacaoPedido avaliacaopedido;
+	@ManyToOne
+	//muitos pedidos para uma avaliação
+	//@JoinColumn(name="idavaliacao",nullable=false)
+	private AvaliacaoPedido avaliacaopedido;
 	
 	//@ManyToOne //muitos pedidos para um cancelamento
 	//@JoinColumn(name="cancelamento",nullable=false)
@@ -69,9 +69,8 @@ public class Pedido implements Serializable {
 	}
 
 
-	
 	public Pedido(Long id, String endereco, Double latitude, Double longitude, Instant moment, PedidoStatus status,
-			Set<Bolo> bolos) {
+			Set<Bolo> bolos, AvaliacaoPedido avaliacaopedido) {
 		super();
 		this.id = id;
 		this.endereco = endereco;
@@ -80,8 +79,8 @@ public class Pedido implements Serializable {
 		this.moment = moment;
 		this.status = status;
 		this.bolos = bolos;
+		this.avaliacaopedido = avaliacaopedido;
 	}
-
 
 
 	public Long getId() {
@@ -140,6 +139,18 @@ public class Pedido implements Serializable {
 	public void setBolos(Set<Bolo> bolos) {
 		this.bolos = bolos;
 	}
+	
+	
+
+	public AvaliacaoPedido getAvaliacaopedido() {
+		return avaliacaopedido;
+	}
+
+
+	public void setAvaliacaopedido(AvaliacaoPedido avaliacaopedido) {
+		this.avaliacaopedido = avaliacaopedido;
+	}
+
 
 	@Override
 	public int hashCode() {
