@@ -30,8 +30,7 @@ public class AvaliacaoPedido implements Serializable {
 	private ClassificacaoAvaliacao classificacao;
 	
 	
-	@OneToMany
-	(mappedBy ="avaliacaopedido")
+	@OneToMany(mappedBy ="avaliacaopedido")
 	@JsonIgnore
 	//uma avaliacao para muitos pedidos
 	private List <Pedido> pedido;

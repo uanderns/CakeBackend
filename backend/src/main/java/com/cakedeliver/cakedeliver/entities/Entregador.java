@@ -1,11 +1,17 @@
 package com.cakedeliver.cakedeliver.entities;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_entregador")
@@ -16,22 +22,30 @@ public class Entregador extends Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
+	@Column(name = "identregador")
 	private Long idEntregador;
-	private String docVeiculo;
 	
-	//@ManyToOne
-	//private Pedido pedido;
+	private String docVeiculo;
+		
+	@OneToMany(mappedBy ="entregador")
+    @JsonIgnore
+	private List <Pedido> pedido;
 	
 	
 	public Entregador() {
 		
 	}
 
-	public Entregador(Long idEntregador, String docVeiculo) {
+	
+
+	public Entregador(Long idEntregador, String docVeiculo, List<Pedido> pedido) {
 		super();
 		this.idEntregador = idEntregador;
 		this.docVeiculo = docVeiculo;
+		this.pedido = pedido;
 	}
+
+
 
 	public Long getIdEntregador() {
 		return idEntregador;
@@ -50,13 +64,17 @@ public class Entregador extends Usuario {
 	}
 	
 	
-	//public Pedido getPedido() {
-		//return pedido;
-	//}
+	public List<Pedido> getPedido() {
+		return pedido;
+	}
 
-	//public void setPedido(Pedido pedido) {
-		//this.pedido = pedido;
-	//}
+
+
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
+	}
+
+
 
 	@Override
 	public int hashCode() {

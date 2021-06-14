@@ -51,26 +51,31 @@ public class Pedido implements Serializable {
 	//@JoinColumn(name="idavaliacao",nullable=false)
 	private AvaliacaoPedido avaliacaopedido;
 	
-	//@ManyToOne //muitos pedidos para um cancelamento
-	//@JoinColumn(name="cancelamento",nullable=false)
-	//private Cancelamento cancelamento;
+	
+	@ManyToOne //muitos pedidos para um cancelamento
+	//@JoinColumn(name="idcancelamento",nullable=false)
+	private Cancelamento cancelamento;
+		
+	
+	
+	@ManyToOne 
+	@JoinColumn(name="identregador", nullable=false)
+	//muitos pedidos para um entregador
+	private Entregador entregador;
 	
 	
 	//@OneToMany
-	//private List <Cliente> cliente;
-	
-	//@OneToMany
-	//private List <Entregador> entregador;
+		//private List <Cliente> cliente;
 		
 	
 	
 	public Pedido() {
 		
 	}
-
+	
 
 	public Pedido(Long id, String endereco, Double latitude, Double longitude, Instant moment, PedidoStatus status,
-			Set<Bolo> bolos, AvaliacaoPedido avaliacaopedido) {
+			Set<Bolo> bolos, AvaliacaoPedido avaliacaopedido, Cancelamento cancelamento, Entregador entregador) {
 		super();
 		this.id = id;
 		this.endereco = endereco;
@@ -80,7 +85,10 @@ public class Pedido implements Serializable {
 		this.status = status;
 		this.bolos = bolos;
 		this.avaliacaopedido = avaliacaopedido;
+		this.cancelamento = cancelamento;
+		this.entregador = entregador;
 	}
+
 
 
 	public Long getId() {
@@ -149,6 +157,29 @@ public class Pedido implements Serializable {
 
 	public void setAvaliacaopedido(AvaliacaoPedido avaliacaopedido) {
 		this.avaliacaopedido = avaliacaopedido;
+	}
+	
+	
+
+	public Cancelamento getCancelamento() {
+		return cancelamento;
+	}
+
+
+
+	public void setCancelamento(Cancelamento cancelamento) {
+		this.cancelamento = cancelamento;
+	}
+	
+	
+
+	public Entregador getEntregador() {
+		return entregador;
+	}
+
+
+	public void setEntregador(Entregador entregador) {
+		this.entregador = entregador;
 	}
 
 
