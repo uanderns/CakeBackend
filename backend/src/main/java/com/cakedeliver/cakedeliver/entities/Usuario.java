@@ -19,14 +19,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public abstract class Usuario implements Serializable {
 		
 	private static final long serialVersionUID = 1L;
-	
-		
+			
 	@Column(length = 50)
 	@NotBlank(message = "Preencha com o Nome do Usuário")
 	@Size(min = 2, max = 50, message = "O Nome do Usuário deve ter entre 2 e 50 caracteres")
 	private String nome;
-	
-		
+			
 	@NotNull(message = "O Usuário deve possuir no minímo um número de telefone")
 	private String telefone;
 	

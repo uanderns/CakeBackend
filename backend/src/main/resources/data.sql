@@ -12,16 +12,11 @@ insert into tb_bolo(nome,preco,idsabor,idtipobolo,idtamanho) values ('bolo cuca'
 insert into tb_bolo(nome,preco,idsabor,idtipobolo,idtamanho) values ('bolo maravilha',20.0,3,2,2);
 
 
-
 insert into tb_avaliacao(classificacao,comentario) values (1, 'gostei muito');
 insert into tb_avaliacao(classificacao,comentario) values (3, 'o bolo estava muito doce');
 
 insert into tb_cancelamento(motivo) values ('bolo chegou desconfigurado');
 insert into tb_cancelamento(motivo) values ('bolo chegou com muito atraso na entrega');
-
-
-
-
 
 
 insert into tb_cliente(cpf,nome,telefone,email,senha) values ('12345678911','Joaquim','2199999999','joaquim@couves.com.br','padrao');

@@ -18,7 +18,7 @@ public class Atendente extends Funcionario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
 	private Long idAtendente;
 	private Boolean ativo = true;
-	private Date dataAdmissao;
+	
 	
 	public Atendente() {
 		
@@ -28,7 +28,7 @@ public class Atendente extends Funcionario {
 		super();
 		this.idAtendente = idAtendente;
 		this.ativo = ativo;
-		this.dataAdmissao = dataAdmissao;
+		
 	}
 
 	public Long getIdAtendente() {
@@ -47,15 +47,7 @@ public class Atendente extends Funcionario {
 		this.ativo = ativo;
 	}
 
-	public Date getDataAdmissao() {
-		return dataAdmissao;
-	}
-
-	public void setDataAdmissao(Date dataAdmissao) {
-		this.dataAdmissao = dataAdmissao;
-	}
-
-	
+		
 	@Override
 	public int hashCode() {
 		final int prime = 31;
