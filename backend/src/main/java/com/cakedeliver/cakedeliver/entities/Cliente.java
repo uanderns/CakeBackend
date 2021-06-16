@@ -2,12 +2,17 @@ package com.cakedeliver.cakedeliver.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -20,37 +25,36 @@ public  class Cliente extends Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
+	@Column(name="idcliente")
 	private Long idCliente;
 	
 	@Column(unique = true)
-	
-	
 	private String email;
+	
 	private String senha;
 	private Boolean ativo = true;
 	
-	
-	
-	//@ManyToOne
-	//private Pedido pedido;
+		
+	@OneToMany(mappedBy = "cliente")
+    @JsonIgnore
+	//um cliente para muitos pedidos 
+	private List <Pedido> pedido;
 
+	
 	public Cliente() {
 		
 	}
 
 	
 
-
-	public Cliente(Long idCliente, String email, String senha, Boolean ativo) {
+	public Cliente(Long idCliente, String email, String senha, Boolean ativo, List<Pedido> pedido) {
 		super();
 		this.idCliente = idCliente;
 		this.email = email;
 		this.senha = senha;
 		this.ativo = ativo;
-		
+		this.pedido = pedido;
 	}
-
-
 
 
 	public Boolean getAtivo() {
@@ -87,6 +91,17 @@ public  class Cliente extends Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	
+
+	public List<Pedido> getPedido() {
+		return pedido;
+	}
+
+
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
 	}
 
 

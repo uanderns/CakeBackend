@@ -57,15 +57,16 @@ public class Pedido implements Serializable {
 	private Cancelamento cancelamento;
 		
 	
-	
 	@ManyToOne 
 	@JoinColumn(name="identregador", nullable=false)
 	//muitos pedidos para um entregador
 	private Entregador entregador;
 	
 	
-	//@OneToMany
-		//private List <Cliente> cliente;
+	@ManyToOne
+	@JoinColumn(name= "idcliente", nullable=false)
+	// muitos pedidos para um entregador
+	private Cliente cliente;
 		
 	
 	
@@ -75,7 +76,7 @@ public class Pedido implements Serializable {
 	
 
 	public Pedido(Long id, String endereco, Double latitude, Double longitude, Instant moment, PedidoStatus status,
-			Set<Bolo> bolos, AvaliacaoPedido avaliacaopedido, Cancelamento cancelamento, Entregador entregador) {
+			Set<Bolo> bolos, AvaliacaoPedido avaliacaopedido, Cancelamento cancelamento, Entregador entregador, Cliente cliente) {
 		super();
 		this.id = id;
 		this.endereco = endereco;
@@ -87,8 +88,8 @@ public class Pedido implements Serializable {
 		this.avaliacaopedido = avaliacaopedido;
 		this.cancelamento = cancelamento;
 		this.entregador = entregador;
+		this.cliente = cliente;
 	}
-
 
 
 	public Long getId() {
@@ -180,6 +181,16 @@ public class Pedido implements Serializable {
 
 	public void setEntregador(Entregador entregador) {
 		this.entregador = entregador;
+	}
+	
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 
