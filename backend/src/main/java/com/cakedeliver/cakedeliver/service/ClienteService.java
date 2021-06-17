@@ -20,6 +20,9 @@ public class ClienteService {
 	}
 	
 	public void save(Cliente cliente) {
+		
+		if(cliente.getIdCliente() == null && cliente.getEmail().isEmpty())
+					
 		repo.save(cliente);
 	}
 	

@@ -19,17 +19,25 @@ public class Atendente extends Funcionario {
 	private Long idAtendente;
 	private Boolean ativo = true;
 	
+	private String email;
+	private String senha;
+	
 	
 	public Atendente() {
 		
 	}
 
-	public Atendente(Long idAtendente, Boolean ativo, Date dataAdmissao) {
+	
+
+	public Atendente(Long idAtendente, Boolean ativo, String email, String senha) {
 		super();
 		this.idAtendente = idAtendente;
 		this.ativo = ativo;
-		
+		this.email = email;
+		this.senha = senha;
 	}
+
+
 
 	public Long getIdAtendente() {
 		return idAtendente;
@@ -47,7 +55,32 @@ public class Atendente extends Funcionario {
 		this.ativo = ativo;
 	}
 
+	
 		
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

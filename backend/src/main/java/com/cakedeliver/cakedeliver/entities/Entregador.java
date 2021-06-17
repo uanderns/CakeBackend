@@ -23,8 +23,10 @@ public class Entregador extends Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO)
 	@Column(name = "identregador")
 	private Long idEntregador;
-	
 	private String docVeiculo;
+	
+	private String email;
+	private String senha;
 		
 	@OneToMany(mappedBy ="entregador")
     @JsonIgnore
@@ -34,17 +36,16 @@ public class Entregador extends Usuario {
 	public Entregador() {
 		
 	}
-
 	
 
-	public Entregador(Long idEntregador, String docVeiculo, List<Pedido> pedido) {
+	public Entregador(Long idEntregador, String docVeiculo, String email, String senha, List<Pedido> pedido) {
 		super();
 		this.idEntregador = idEntregador;
 		this.docVeiculo = docVeiculo;
+		this.email = email;
+		this.senha = senha;
 		this.pedido = pedido;
 	}
-
-
 
 	public Long getIdEntregador() {
 		return idEntregador;
@@ -67,12 +68,27 @@ public class Entregador extends Usuario {
 		return pedido;
 	}
 
-
-
 	public void setPedido(List<Pedido> pedido) {
 		this.pedido = pedido;
 	}
+	
+	
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 
 	@Override

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,12 +13,12 @@ import javax.validation.constraints.Size;
 import com.cakedeliver.cakedeliver.enums.GeneroStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
- //para a heranças das classes que herdarao
+ 	//para a heranças das classes que herdarao
 
-//@Embeddable
-@MappedSuperclass
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class Usuario implements Serializable {
+	//@Embeddable
+	@MappedSuperclass
+	//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+	public abstract class Usuario implements Serializable {
 		
 	private static final long serialVersionUID = 1L;
 			
@@ -31,10 +33,12 @@ public abstract class Usuario implements Serializable {
 	@Column(length = 11, unique = true)
 	@Size(min = 11, max = 11, message = "O CPF do Usuário deve conter 11 digitos")
 	private String cpf;
-			
+	
+	@Temporal(TemporalType.DATE) //salva somente data no banco de dados
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date dataNascimento;
 	
+		
 	private GeneroStatus genero;
 	
 	public Usuario() {}

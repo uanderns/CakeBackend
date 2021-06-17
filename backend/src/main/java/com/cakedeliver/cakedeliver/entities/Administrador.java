@@ -18,16 +18,23 @@ public class Administrador extends Funcionario {
 	private Long idAdm;
 	private Boolean ativo = true;
 	
+	private String email;
+	private String senha;
+	
 	
 	public Administrador() {
 		
 	}
 
-	public Administrador(Long idAdm, Boolean ativo) {
+	
+	public Administrador(Long idAdm, Boolean ativo, String email, String senha) {
 		super();
 		this.idAdm = idAdm;
 		this.ativo = ativo;
+		this.email = email;
+		this.senha = senha;
 	}
+
 
 	public Long getIdAdm() {
 		return idAdm;
@@ -44,6 +51,28 @@ public class Administrador extends Funcionario {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
+	
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 
 	@Override
 	public int hashCode() {

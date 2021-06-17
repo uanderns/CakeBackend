@@ -3,46 +3,33 @@ package com.cakedeliver.cakedeliver.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-//@Entity
-//@Table(name = "tb_funcionario")
-@MappedSuperclass
-public abstract class Funcionario extends Usuario implements Serializable {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+	//@Entity
+	//@Table(name = "tb_funcionario")
+	@MappedSuperclass
+	public abstract class Funcionario extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = -1L;
-
-	private String email;
-	private String senha;
+	
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date dataAdmissao;
 
 	public Funcionario() {
 
 	}
 
-	public Funcionario(Long idFuncionario, String email, String senha, Date dataAdmissao) {
+		
+	public Funcionario(Date dataAdmissao) {
 		super();
-		;
-		this.email = email;
-		this.senha = senha;
 		this.dataAdmissao = dataAdmissao;
-
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+	
 
 	public Date getDataAdmissao() {
 		return dataAdmissao;
