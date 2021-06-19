@@ -3,6 +3,8 @@ package com.cakedeliver.cakedeliver.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date dataNascimento;
 	
-		
+	@Enumerated(EnumType.STRING) //converte o enum em String	
 	private GeneroStatus genero;
 	
 	public Usuario() {}

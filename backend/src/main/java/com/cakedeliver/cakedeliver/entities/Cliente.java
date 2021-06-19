@@ -22,6 +22,7 @@ public class Cliente extends Usuario implements Serializable {
 	@Column(name = "idcliente")
 	private Long idCliente;
 	private Boolean ativo = true;
+	private String endereco;
 
 	@Column(unique = true)
 	private String email;
@@ -36,12 +37,13 @@ public class Cliente extends Usuario implements Serializable {
 
 	}
 
-	public Cliente(Long idCliente, String email, String senha, Boolean ativo, List<Pedido> pedido) {
+	public Cliente(Long idCliente, Boolean ativo, String endereco, String email, String senha, List<Pedido> pedido) {
 		super();
 		this.idCliente = idCliente;
+		this.ativo = ativo;
+		this.endereco = endereco;
 		this.email = email;
 		this.senha = senha;
-		this.ativo = ativo;
 		this.pedido = pedido;
 	}
 
@@ -83,6 +85,14 @@ public class Cliente extends Usuario implements Serializable {
 
 	public void setPedido(List<Pedido> pedido) {
 		this.pedido = pedido;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override

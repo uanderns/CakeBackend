@@ -28,7 +28,6 @@ public class Pedido implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO) //auto incremento no banco
 	@Column(name="idpedido")
 	private Long id;
-	private String endereco;
 	private Double latitude; //armazenar geolocalização
 	private Double longitude; //armazenar geolocalização
 	
@@ -72,11 +71,10 @@ public class Pedido implements Serializable {
 	}
 	
 
-	public Pedido(Long id, String endereco, Double latitude, Double longitude, Instant moment, PedidoStatus status,
+	public Pedido(Long id,Double latitude, Double longitude, Instant moment, PedidoStatus status,
 			Set<Bolo> bolos, AvaliacaoPedido avaliacaopedido, Cancelamento cancelamento, Entregador entregador, Cliente cliente) {
 		super();
 		this.id = id;
-		this.endereco = endereco;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.moment = moment;
@@ -97,14 +95,7 @@ public class Pedido implements Serializable {
 		this.id = id;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
+	
 	public Double getLatitude() {
 		return latitude;
 	}
