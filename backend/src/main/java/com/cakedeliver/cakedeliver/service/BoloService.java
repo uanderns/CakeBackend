@@ -18,7 +18,7 @@ public class BoloService {
 	private BoloRepository repo;
 	
 	public List<Bolo> listAll(){
-		return repo.findAll();
+		return repo.findAllByOrderByNomeAsc();
 	}	
 	
 	public void save(Bolo bolo) {

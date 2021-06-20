@@ -11,8 +11,10 @@ import com.cakedeliver.cakedeliver.entities.Pedido;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 	
-	//@Query("SELECT DISTINCT obj FROM Pedido obj JOIN FETCH obj.bolos"
-			//+ " WHERE obj.status = 0 PEDIDO BY obj.moment ASC ")
-	//List<Pedido> findPedidosWithBolos();
+	// Ordenar os pedidos do mais antigo pro mais recente
+	
+	@Query("SELECT DISTINCT obj FROM Pedido obj JOIN FETCH obj.bolos "
+			+ " WHERE obj.status = 0 ORDER BY obj.moment ASC")
+	List<Pedido> findPedidosWithBolos();
 
 }

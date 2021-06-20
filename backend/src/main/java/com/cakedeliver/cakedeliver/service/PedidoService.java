@@ -17,7 +17,7 @@ public class PedidoService {
 	private PedidoRepository repo;
 	
 	public List<Pedido> listAll(){
-		return repo.findAll();
+		return repo.findPedidosWithBolos();
 		
 	}
 	

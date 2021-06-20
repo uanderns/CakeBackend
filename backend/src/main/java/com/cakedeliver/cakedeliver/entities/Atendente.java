@@ -1,6 +1,5 @@
 package com.cakedeliver.cakedeliver.entities;
 
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
