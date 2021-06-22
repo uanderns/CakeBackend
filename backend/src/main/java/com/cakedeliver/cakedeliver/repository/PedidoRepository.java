@@ -14,7 +14,7 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 	// Ordenar os pedidos do mais antigo pro mais recente
 	
 	@Query("SELECT DISTINCT obj FROM Pedido obj JOIN FETCH obj.bolos "
-			+ " WHERE obj.status = 0 ORDER BY obj.moment ASC")
+			+ " WHERE obj.status = 'PENDENTE' ORDER BY obj.moment ASC")
 	List<Pedido> findPedidosWithBolos();
 
 }

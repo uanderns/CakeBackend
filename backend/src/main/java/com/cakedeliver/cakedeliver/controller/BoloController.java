@@ -34,12 +34,7 @@ public class BoloController {
 		return service.listAll();
 
 	}
-
-	//@GetMapping("/bolos")
-	//public ResponseEntity<List<BoloDTO>> findAll() {
-		//List<BoloDTO> list = service.findAll();
-		//return ResponseEntity.ok(list);
-	//}
+	
 
 	@GetMapping("/bolos/{id}")
 	public ResponseEntity<Bolo> get(@PathVariable Long id) {

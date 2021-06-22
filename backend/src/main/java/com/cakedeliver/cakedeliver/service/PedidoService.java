@@ -16,7 +16,7 @@ public class PedidoService {
 	@Autowired
 	private PedidoRepository repo;
 	
-	public List<Pedido> listAll(){
+	public List<Pedido> findAll(){
 		return repo.findPedidosWithBolos();
 		
 	}

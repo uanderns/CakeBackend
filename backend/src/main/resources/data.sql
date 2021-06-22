@@ -21,5 +21,7 @@ insert into tb_cancelamento(motivo) values ('bolo chegou com muito atraso na ent
 
 insert into tb_cliente(cpf,nome,telefone,email,senha) values ('12345678911','Joaquim','2199999999','joaquim@couves.com.br','padrao');
 
+insert into tb_entregador (cpf,data_nascimento,genero,nome,telefone,doc_veiculo,email,senha) values ('12345678955', '1998-07-07', 'MASCULINO', 'Manoel Sardinha', '21976555522', 'KMB5056', 'manoel@sardinha.com', 'padrao2');
 
+insert into tb_entregador (cpf,data_nascimento,genero,nome,telefone,doc_veiculo,email,senha) values ('13345678555', '1998-07-07', 'MASCULINO', 'Manoel Galinha', '2197655332', 'KMB5057', 'manoel@galinha.com', 'padrao2');
 

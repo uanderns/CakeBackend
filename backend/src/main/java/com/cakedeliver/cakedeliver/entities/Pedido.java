@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +17,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ColumnDefault;
+
 import com.cakedeliver.cakedeliver.enums.PedidoStatus;
 
 
@@ -32,6 +37,9 @@ public class Pedido implements Serializable {
 	private Double longitude; //armazenar geolocalização
 	
 	private Instant moment; //Instante em que o pedido foi feito
+	
+	@Enumerated(EnumType.STRING) //Converter enum em String
+	@ColumnDefault("'PENDENTE'") // setar valor default do status para PENDENTE
 	private PedidoStatus status; //atributo da classe enum
 	
 	@ManyToMany(fetch=FetchType.EAGER) //Annotation de relacionamento de muitos pra muitos

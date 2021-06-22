@@ -27,8 +27,8 @@ public class PedidoController {
 	private PedidoService service;
 	
 	@GetMapping("/pedidos")
-	public List<Pedido> list(){
-		return service.listAll();
+	public List<Pedido> findAll(){
+		return service.findAll();
 	}
 	
 	@GetMapping("pedidos/{id}")
