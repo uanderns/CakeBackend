@@ -2,7 +2,6 @@ package com.cakedeliver.cakedeliver.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +28,10 @@ public class PedidoController {
 	@GetMapping("/pedidos")
 	public List<Pedido> findAll(){
 		return service.findAll();
-	}
+		
+		}
 	
+			
 	@GetMapping("pedidos/{id}")
 	public ResponseEntity<Pedido> get(@PathVariable Long id){
 		try {

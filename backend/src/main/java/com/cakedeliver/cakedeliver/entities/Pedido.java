@@ -18,6 +18,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 import org.hibernate.annotations.ColumnDefault;
 
 import com.cakedeliver.cakedeliver.enums.PedidoStatus;
@@ -36,7 +37,8 @@ public class Pedido implements Serializable {
 	private Double latitude; //armazenar geolocalização
 	private Double longitude; //armazenar geolocalização
 	
-	private Instant moment; //Instante em que o pedido foi feito
+	
+	private Instant moment;//Instante em que o pedido foi feito
 	
 	@Enumerated(EnumType.STRING) //Converter enum em String
 	@ColumnDefault("'PENDENTE'") // setar valor default do status para PENDENTE
@@ -72,15 +74,14 @@ public class Pedido implements Serializable {
 	// muitos pedidos para um entregador
 	private Cliente cliente;
 		
-	
-	
-	public Pedido() {
 		
+	public Pedido() {
+						
 	}
 	
-
-	public Pedido(Long id,Double latitude, Double longitude, Instant moment, PedidoStatus status,
-			Set<Bolo> bolos, AvaliacaoPedido avaliacaopedido, Cancelamento cancelamento, Entregador entregador, Cliente cliente) {
+		
+	public Pedido(Long id, Double latitude, Double longitude, Instant moment, PedidoStatus status, Set<Bolo> bolos,
+			AvaliacaoPedido avaliacaopedido, Cancelamento cancelamento, Entregador entregador, Cliente cliente) {
 		super();
 		this.id = id;
 		this.latitude = latitude;
@@ -94,7 +95,7 @@ public class Pedido implements Serializable {
 		this.cliente = cliente;
 	}
 
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -120,6 +121,7 @@ public class Pedido implements Serializable {
 		this.longitude = longitude;
 	}
 
+	
 	public Instant getMoment() {
 		return moment;
 	}

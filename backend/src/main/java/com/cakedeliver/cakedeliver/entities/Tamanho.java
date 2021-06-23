@@ -20,10 +20,10 @@ public class Tamanho {
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto incremento no banco
+	@GeneratedValue(strategy = GenerationType.IDENTITY.AUTO) //auto incremento no banco
 	@Column(name = "idtamanho")
  	private Long idTamanho;
-	private Double tamanho;
+	private String tamanho;
 	
 	
 	
@@ -37,7 +37,7 @@ public class Tamanho {
 	}
 
 	
-	public Tamanho(Long idTamanho, Double tamanho, List<Bolo> bolos) {
+	public Tamanho(Long idTamanho, String tamanho, List<Bolo> bolos) {
 		super();
 		this.idTamanho = idTamanho;
 		this.tamanho = tamanho;
@@ -53,11 +53,11 @@ public class Tamanho {
 		this.idTamanho = idTamanho;
 	}
 
-	public Double getTamanho() {
+	public String getTamanho() {
 		return tamanho;
 	}
 
-	public void setTamanho(Double tamanho) {
+	public void setTamanho(String tamanho) {
 		this.tamanho = tamanho;
 	}
 	
