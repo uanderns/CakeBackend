@@ -2,7 +2,7 @@ package com.cakedeliver.cakedeliver.enums;
 
 public enum ClassificacaoAvaliacao {
 
-	HORRIVEL(1,"Horrível"), RUIM(2,"Ruim"), RAZOAVEL(3,"Razoável"), MUITO_BOM(4,"Muito Bom"), EXCELENTE(5,"Excelente");
+	SEM_COMENTARIOS(0,"sem comentarios"),HORRIVEL(1,"Horrível"), RUIM(2,"Ruim"), RAZOAVEL(3,"Razoável"), MUITO_BOM(4,"Muito Bom"), EXCELENTE(5,"Excelente"); 
 	
 	
 	// Classificação em estrelas de 1-Horrivel, 2- Ruim, 3- Razoavel, 4- Muito bom e 5- Excelente 
