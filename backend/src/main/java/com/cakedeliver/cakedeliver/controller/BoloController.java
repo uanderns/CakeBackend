@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cakedeliver.cakedeliver.entities.Bolo;
+import com.cakedeliver.cakedeliver.repository.BoloRepository;
 import com.cakedeliver.cakedeliver.service.BoloService;
+
 
 @RestController
 @ResponseBody
@@ -28,12 +32,28 @@ public class BoloController {
 
 	@Autowired
 	private BoloService service;
+	
+	@Autowired
+	private BoloRepository repository;
 
+	//@GetMapping("/bolos")
+	//public List<Bolo> list() {
+	//	return service.listAll();
+
+	//}
+	
 	@GetMapping("/bolos")
-	public List<Bolo> list() {
-		return service.listAll();
-
+	public ResponseEntity<List<Bolo>> findAll(){
+		List<Bolo> result = repository.findAll();
+		return ResponseEntity.ok(result);
 	}
+	
+	@GetMapping("/bolos/page") //Paginação
+	public ResponseEntity<Page<Bolo>> findAll(Pageable pageable){
+		Page<Bolo> result = repository.findAll(pageable);
+		return ResponseEntity.ok(result);
+	}
+	
 	
 
 	@GetMapping("/bolos/{id}")
@@ -48,7 +68,8 @@ public class BoloController {
 
 	@PostMapping("/bolos")
 	public void add(@RequestBody Bolo bolo) {
-		service.save(bolo);
+		repository.save(bolo);
+		//service.save(bolo);
 		System.out.println("gravado com sucesso!");
 
 	}
@@ -68,7 +89,8 @@ public class BoloController {
 
 	@DeleteMapping("/bolos/{id}")
 	public void delete(@PathVariable Long id) {
-		service.delete(id);
+		repository.deleteById(id);
+		//service.delete(id);
 	}
 
 }

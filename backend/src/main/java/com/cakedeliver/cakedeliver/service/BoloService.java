@@ -17,7 +17,7 @@ public class BoloService {
 	@Autowired
 	private BoloRepository repo;
 	
-	public List<Bolo> listAll(){
+	public List<Bolo> findAll(){
 		return repo.findAllByOrderByNomeAsc();
 	}	
 	
@@ -32,5 +32,7 @@ public class BoloService {
 	public void delete(Long id) {
 		repo.deleteById(id);
 	}
+
+	
 
 }
